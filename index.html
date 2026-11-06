@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OWC Workshop Quiz · BMSCE</title>
+<meta name="description" content="Wrap-up quiz for the hands-on Optical Wireless Communication workshop, Dept. of ECE, BMSCE, 26 Nov 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap">
+<style>
+  :root {
+    --navy: #0E1A2B; --navy-2: #16263B; --cream: #F6F4EE; --card: #FFFDF8;
+    --ink: #2A3442; --muted: #5E6978; --line: #DDD7C8;
+    --teal: #0F7C87; --teal-soft: #E3F1F2; --amber: #F2A93B;
+    --good: #1E7D45; --good-soft: #E4F3EA; --bad: #B23A2B; --bad-soft: #F9E6E3;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font: 17px/1.55 Inter, Arial, sans-serif; }
+  header { background: var(--navy); color: var(--cream); padding: 28px 16px 32px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+  .eyebrow { color: #4FD1DC; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin: 0 0 6px; }
+  h1 { font: 700 clamp(26px, 5vw, 38px)/1.15 'Space Grotesk', Arial, sans-serif; margin: 0 0 8px; }
+  header p.sub { color: #C9D6E3; margin: 0; }
+  main { padding: 24px 0 64px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; margin: 0 0 16px; }
+  label.field { display: block; font-weight: 600; margin: 12px 0 4px; }
+  input[type=text] { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: #fff; }
+  input[type=text]:focus { outline: 3px solid var(--teal-soft); border-color: var(--teal); }
+  button { font: 600 16px Inter, Arial, sans-serif; border: 0; border-radius: 10px; padding: 12px 20px; cursor: pointer; }
+  .btn { background: var(--teal); color: #fff; }
+  .btn:hover { background: #0B5F68; }
+  .btn:disabled { background: #9DB9BC; cursor: not-allowed; }
+  .btn-ghost { background: transparent; color: var(--teal); border: 2px solid var(--teal); }
+  .q-num { color: var(--teal); font-weight: 600; font-size: 14px; margin: 0 0 4px; }
+  .q-text { font-weight: 600; margin: 0 0 14px; font-size: 18px; }
+  .opt { display: flex; gap: 12px; align-items: flex-start; padding: 11px 14px; border: 1px solid var(--line); border-radius: 10px; margin: 0 0 8px; cursor: pointer; background: #fff; }
+  .opt:hover { border-color: var(--teal); }
+  .opt input { margin-top: 5px; accent-color: var(--teal); }
+  .opt.correct { background: var(--good-soft); border-color: var(--good); }
+  .opt.wrong { background: var(--bad-soft); border-color: var(--bad); }
+  .tag { font-size: 13px; font-weight: 600; margin-left: auto; white-space: nowrap; }
+  .tag.ok { color: var(--good); } .tag.no { color: var(--bad); }
+  .explain { background: var(--teal-soft); border-radius: 10px; padding: 12px 14px; margin-top: 10px; font-size: 15px; }
+  .bar { position: sticky; top: 0; z-index: 5; background: var(--cream); border-bottom: 1px solid var(--line); padding: 10px 0; }
+  .bar .wrap { display: flex; align-items: center; gap: 14px; }
+  .progress { flex: 1; height: 8px; background: var(--line); border-radius: 8px; overflow: hidden; }
+  .progress > span { display: block; height: 100%; background: var(--teal); width: 0; transition: width .2s; }
+  .count { font-size: 14px; color: var(--muted); white-space: nowrap; }
+  .score { text-align: center; }
+  .score .big { font: 700 64px/1 'Space Grotesk', Arial, sans-serif; color: var(--teal); margin: 8px 0; }
+  .score .verdict { font-weight: 600; font-size: 20px; margin: 0 0 6px; }
+  .muted { color: var(--muted); }
+  .note { font-size: 14px; color: var(--muted); }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
+  .hidden { display: none !important; }
+  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 0 16px 32px; }
+  @media print { .bar, .row, button { display: none !important; } header { background: none; color: var(--ink); } .card { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Hands-on workshop · Dept. of ECE, BMSCE</p>
+    <h1>Data at the Speed of Light: Wrap-up Quiz</h1>
+    <p class="sub">Optical Wireless Communication · 26 November 2026 · Dr. Sathisha R N</p>
+  </div>
+</header>
+
+<!-- Start screen -->
+<main id="start" class="wrap">
+  <div class="card">
+    <p><b id="qtotal">15</b> multiple-choice questions on today’s talks and labs. About 10 minutes. Pick one answer per question, then press <b>Submit</b> to see your score and explanations.</p>
+    <label class="field" for="name">Your name</label>
+    <input type="text" id="name" autocomplete="name" placeholder="e.g. Ananya K">
+    <label class="field" for="usn">USN</label>
+    <input type="text" id="usn" placeholder="e.g. 1BM23EC001" style="text-transform: uppercase">
+    <p class="note" id="err" role="alert"></p>
+    <button class="btn" id="begin">Start quiz</button>
+  </div>
+</main>
+
+<!-- Quiz -->
+<div id="quiz" class="hidden">
+  <div class="bar"><div class="wrap">
+    <div class="progress" aria-hidden="true"><span id="prog"></span></div>
+    <span class="count" id="answered">0 / 15 answered</span>
+  </div></div>
+  <main class="wrap">
+    <form id="qform"></form>
+    <div class="card" style="text-align:center">
+      <p class="note" id="unanswered"></p>
+      <button class="btn" id="submit" type="button">Submit answers</button>
+    </div>
+  </main>
+</div>
+
+<!-- Result -->
+<main id="result" class="wrap hidden">
+  <div class="card score">
+    <p class="muted" id="who"></p>
+    <p class="big" id="pts"></p>
+    <p class="verdict" id="verdict"></p>
+    <p class="note" id="saved"></p>
+    <div class="row">
+      <button class="btn" id="review" type="button">Review answers</button>
+      <button class="btn-ghost" id="print" type="button">Print / save as PDF</button>
+    </div>
+  </div>
+</main>
+
+<footer>Siddaganga Institute of Technology, Tumakuru · Questions: satisharyan@gmail.com</footer>
+
+<script>
+/* ===========================================================
+   SETTINGS: edit these
+   =========================================================== */
+const CONFIG = {
+  // Optional: paste your Google Apps Script web-app URL here to collect
+  // scores in a Google Sheet (see README). Leave "" to disable.
+  SUBMIT_URL: "",
+  SHUFFLE_QUESTIONS: false,   // true = each student gets a different order
+};
+
+/* ===========================================================
+   QUESTIONS: answer = index of the correct option (0 = first)
+   =========================================================== */
+const QUESTIONS = [
+  { q: "Which part of the spectrum lies roughly between 430 and 790 THz?",
+    o: ["Microwaves", "Infrared", "Visible light", "Ultraviolet"], a: 2,
+    e: "Visible light spans about 430–790 THz, a band over a thousand times wider than the entire radio spectrum (up to 300 GHz)." },
+  { q: "Why can every room reuse the same optical band without interfering with the next room?",
+    o: ["Light travels faster than radio", "Light does not pass through walls", "Light needs a licence per room", "Light uses a lower frequency"], a: 1,
+    e: "Walls block light, so each room is a separate cell. This also makes the link harder to eavesdrop on from outside." },
+  { q: "A photodiode has responsivity 0.5 A/W and receives 2 µW of light. What is the photocurrent?",
+    o: ["0.25 µA", "1 µA", "4 µA", "1 mA"], a: 1,
+    e: "I = R × P = 0.5 A/W × 2 µW = 1 µA (Program 1)." },
+  { q: "What is 1 µW expressed in dBm?",
+    o: ["0 dBm", "−3 dBm", "−30 dBm", "−60 dBm"], a: 2,
+    e: "dBm = 10 log₁₀(P / 1 mW) = 10 log₁₀(0.001) = −30 dBm." },
+  { q: "From a small source, about how much received power is lost each time the distance doubles?",
+    o: ["3 dB", "6 dB", "10 dB", "20 dB"], a: 1,
+    e: "Inverse-square law: doubling distance gives one quarter of the power, which is 10 log₁₀(4) ≈ 6 dB (Program 2)." },
+  { q: "An LED’s semi-angle is reduced from 60° to 15°. What happens?",
+    o: ["Brighter straight ahead, less coverage at the sides", "Dimmer everywhere", "Wider coverage, same peak brightness", "No change in the light pattern"], a: 0,
+    e: "A smaller semi-angle means a larger Lambertian order m: light is concentrated forward, so peak power rises but coverage shrinks (Programs 3 and 4)." },
+  { q: "In OOK with levels 0 (off) and 1 (on) and equally likely bits, where is the best decision threshold?",
+    o: ["0.1", "0.5", "0.9", "1.0"], a: 1,
+    e: "Halfway between the two levels balances the errors of reading a 0 as 1 and a 1 as 0 (Program 6)." },
+  { q: "What does a narrow optical band-pass filter in front of the receiver mainly reduce?",
+    o: ["Path loss", "Shot noise from ambient light", "The laser’s divergence", "The modulation bandwidth"], a: 1,
+    e: "The filter blocks most sunlight and room light outside the laser’s wavelength, cutting background shot noise and raising SNR (Program 7)." },
+  { q: "About what SNR does OOK need to reach a BER of 10⁻⁹?",
+    o: ["3 dB", "8.5 dB", "15.6 dB", "30 dB"], a: 2,
+    e: "BER = Q(√SNR); Q(6) ≈ 10⁻⁹, so SNR = 36, about 15.6 dB." },
+  { q: "Sending bits much faster than the receiver’s bandwidth closes the eye diagram. What causes this?",
+    o: ["Inter-symbol interference", "Too much optical power", "Hermitian symmetry", "Lens aberration"], a: 0,
+    e: "A limited bandwidth smooths each pulse, so neighbouring bits blur into each other: inter-symbol interference (Program 8)." },
+  { q: "How many bits does one 64-QAM symbol carry?",
+    o: ["4", "6", "8", "64"], a: 1,
+    e: "log₂(64) = 6 bits per symbol. More bits per symbol needs a higher SNR (Program 9)." },
+  { q: "Why does DCO-OFDM add a DC bias before driving an LED or laser?",
+    o: ["To increase the bandwidth", "Because light intensity cannot be negative", "To remove ambient light", "To make the signal complex"], a: 1,
+    e: "OFDM produces bipolar signals, but a light source can only emit positive intensity. The bias lifts the signal; what stays negative is clipped (MATLAB M3)." },
+  { q: "In two-user NOMA, which user is given more transmit power?",
+    o: ["The near user (stronger channel)", "The far user (weaker channel)", "Both get exactly half", "Whichever user transmits first"], a: 1,
+    e: "The far user’s channel is weaker, so it gets more power. The near user removes that stronger signal with SIC before decoding its own (Program 11)." },
+  { q: "A liquid lens is set to increase the laser beam’s divergence. What happens to the cell?",
+    o: ["Smaller cell, more power per user", "Larger cell, less power per user", "Larger cell, more power per user", "No change"], a: 1,
+    e: "A wider beam covers more area but spreads the same power, so each user gets less. In the IISc experiments, smaller cells gave higher data rates (Program 10)." },
+  { q: "What is the main purpose of RF–VLC handover?",
+    o: ["To double the light’s brightness", "To keep the connection alive when the light path is blocked", "To remove the need for a photodiode", "To convert radio into light"], a: 1,
+    e: "When the light link is blocked or too weak, the device switches to radio: light gives capacity, radio gives coverage (Talk 2)." },
+];
+
+/* ===========================================================
+   App (no need to edit below)
+   =========================================================== */
+const $ = id => document.getElementById(id);
+let order = QUESTIONS.map((_, i) => i);
+let student = { name: "", usn: "" };
+$("qtotal").textContent = QUESTIONS.length;
+
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+function render() {
+  $("qform").innerHTML = order.map((qi, n) => {
+    const Q = QUESTIONS[qi];
+    return `<fieldset class="card" style="border:1px solid var(--line)" id="card${qi}">
+      <legend class="hidden">Question ${n + 1}</legend>
+      <p class="q-num">Question ${n + 1} of ${order.length}</p>
+      <p class="q-text">${esc(Q.q)}</p>
+      ${Q.o.map((opt, oi) => `<label class="opt" id="o${qi}_${oi}">
+          <input type="radio" name="q${qi}" value="${oi}"> <span>${esc(opt)}</span></label>`).join("")}
+      <div class="explain hidden" id="e${qi}"></div>
+    </fieldset>`;
+  }).join("");
+  $("qform").addEventListener("change", updateProgress);
+  updateProgress();
+}
+
+function answers() { return order.map(qi => { const c = document.querySelector(`input[name=q${qi}]:checked`); return c ? Number(c.value) : null; }); }
+
+function updateProgress() {
+  const done = answers().filter(a => a !== null).length;
+  $("answered").textContent = `${done} / ${order.length} answered`;
+  $("prog").style.width = (100 * done / order.length) + "%";
+  $("unanswered").textContent = done < order.length ? `${order.length - done} question(s) not answered yet.` : "All answered. Ready to submit.";
+}
+
+$("begin").onclick = () => {
+  student.name = $("name").value.trim();
+  student.usn = $("usn").value.trim().toUpperCase();
+  if (!student.name || !student.usn) { $("err").textContent = "Please enter your name and USN."; return; }
+  if (CONFIG.SHUFFLE_QUESTIONS) shuffle(order);
+  $("start").classList.add("hidden"); $("quiz").classList.remove("hidden");
+  render(); window.scrollTo(0, 0);
+};
+
+$("submit").onclick = () => {
+  const ans = answers();
+  const left = ans.filter(a => a === null).length;
+  if (left && !confirm(`${left} question(s) are unanswered and will be marked wrong. Submit anyway?`)) return;
+  let score = 0;
+  order.forEach((qi, n) => {
+    const Q = QUESTIONS[qi], pick = ans[n], ok = pick === Q.a;
+    if (ok) score++;
+    document.querySelectorAll(`input[name=q${qi}]`).forEach(r => r.disabled = true);
+    const right = $(`o${qi}_${Q.a}`);
+    right.classList.add("correct");
+    right.insertAdjacentHTML("beforeend", `<span class="tag ok">Correct answer</span>`);
+    if (pick !== null && !ok) {
+      const w = $(`o${qi}_${pick}`);
+      w.classList.add("wrong");
+      w.insertAdjacentHTML("beforeend", `<span class="tag no">Your answer</span>`);
+    }
+    const ex = $(`e${qi}`);
+    ex.innerHTML = `<b>${ok ? "Correct." : pick === null ? "Not answered." : "Not quite."}</b> ${esc(Q.e)}`;
+    ex.classList.remove("hidden");
+  });
+  const total = order.length, pct = Math.round(100 * score / total);
+  $("who").textContent = `${student.name} · ${student.usn}`;
+  $("pts").textContent = `${score} / ${total}`;
+  $("verdict").textContent = pct >= 80 ? "Excellent work!" : pct >= 60 ? "Good job." : pct >= 40 ? "A fair start: review the explanations." : "Review the explanations and try the notebooks again.";
+  $("submit").disabled = true; $("submit").textContent = "Submitted";
+  $("quiz").classList.add("hidden"); $("result").classList.remove("hidden");
+  window.scrollTo(0, 0);
+  send({ name: student.name, usn: student.usn, score, total,
+         answers: order.map((qi, n) => ans[n] === null ? "-" : "ABCD"[ans[n]]).join(""),
+         time: new Date().toISOString() });
+};
+
+$("review").onclick = () => { $("quiz").classList.remove("hidden"); $("result").classList.add("hidden"); $("quiz").querySelector(".bar").classList.add("hidden"); window.scrollTo(0, 0); };
+$("print").onclick = () => { $("quiz").classList.remove("hidden"); window.print(); };
+
+function send(row) {
+  if (!CONFIG.SUBMIT_URL) { $("saved").textContent = "Show this screen to your instructor."; return; }
+  $("saved").textContent = "Saving your score…";
+  fetch(CONFIG.SUBMIT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(row) })
+    .then(() => { $("saved").textContent = "Your score has been recorded."; })
+    .catch(() => { $("saved").textContent = "Could not save online. Show this screen to your instructor."; });
+}
+</script>
+</body>
+</html>
